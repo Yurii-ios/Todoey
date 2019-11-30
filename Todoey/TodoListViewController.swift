@@ -56,8 +56,33 @@ class TodoListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         }
-    
+    //MARK: - Add New Items
+    //sozdaem knopky dobawlenija nowux zapisej
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+      // sozdaem lokalnyju peremennyju dlia pereda4i wwedennoj informaciipolzowatelem  iz alert.addTextField  dlia otobragenija w tableView
+        var textField = UITextField ()
+        
+        let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+          // zdes nygno pisat powedenie action pri ego nagatii
+            print(textField.text)
+            //textField.text! - nikogda  ne bwaet pystum, poetomy mogno  spokoino anrapnyt
+            // dobawliaem w masiw tekst wwedennuj w  alert.addTextField
+            self.itemArray.append(textField.text!)
+            // blagodaria reloadData() nowuj element masiwa bydet pokazan na ekrane
+            self.tableView.reloadData()
+        }
+        //dobawliaem k alerty tekstowoe pole dlia wwoda nowogo zadanija
+        alert.addTextField { (alertTextField) in
+            // sozdaem tekst - podskazky w tekstowomy pole
+        alertTextField.placeholder = "Create new item"
+          textField = alertTextField
+                    }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
+
+}
     
 
 
