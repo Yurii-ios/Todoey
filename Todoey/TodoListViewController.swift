@@ -12,11 +12,16 @@ class TodoListViewController: UITableViewController {
     
     // sozdaem nowuj masiw elementow
     var itemArray = ["Find Mike", "Buy Eggos", "Destroy Demogorgon"]
+    // sozdaem nowuj objekt polzowatelskoj bazu dannux po ymol4aniju
+    let defaults = UserDefaults.standard
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // izwlekaem iz bazu dannux informaciju i pomes4aem ee w masiw , priwodim do tipa masiwa strok. no esli spisok dannux w baze otsytstwyet prilogenije zawisnet
+        if let items = defaults.array(forKey: "TodoListArray") as? [String] { 
+            itemArray = items
+        }
     }
 
 //MARK: - TableView Datasource Mathods
@@ -56,7 +61,7 @@ class TodoListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         }
-    //MARK: - Add New Items
+//MARK: - Add New Items
     //sozdaem knopky dobawlenija nowux zapisej
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
       // sozdaem lokalnyju peremennyju dlia pereda4i wwedennoj informaciipolzowatelem  iz alert.addTextField  dlia otobragenija w tableView
@@ -69,6 +74,10 @@ class TodoListViewController: UITableViewController {
             //textField.text! - nikogda  ne bwaet pystum, poetomy mogno  spokoino anrapnyt
             // dobawliaem w masiw tekst wwedennuj w  alert.addTextField
             self.itemArray.append(textField.text!)
+            
+            //soxraniaem wwedennue dannue polzowatelem w bazy dannux.
+            self.defaults.set(self.itemArray, forKey: "TodoListArray")
+            
             // blagodaria reloadData() nowuj element masiwa bydet pokazan na ekrane
             self.tableView.reloadData()
         }

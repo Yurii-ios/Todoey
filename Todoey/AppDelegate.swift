@@ -12,10 +12,28 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
+// etod metod wuzuwaetsia kogdaprilogenie zagrygaetsia. eto perwoe 4to proisxodit do togo kak viewDidLoad prilogenie polnostju zagryzitsia
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // opredeliaem identifikator peso4nicu gde zapys4eno nashe prilogenije, 4tobu prowerit soxraniaet li nasha baza dannux wwedennyju informaciju
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        
         return true
+    }
+    
+    // srabatuwaet togda kogda s telefonom 4toto proisxodit kogda prologenie otkrito na perednem plane. naprimer esli polzowatel poly4aet zwonok , to w etom metode mu moget 4toto sdelat 4tobu predotwratit poteriu dannux.
+    func applicationWillResignActive(_ application: UIApplication) {
+        
+    }
+    
+    //propisuwaem powedenie prilogenija kogda ono w bekgraynde.
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("applicationDidEnterBackground")
+    }
+    
+    //to mesto gde prilogenie bydet zakruto. wuzuwaetsia polzowatelem ili sistemoj.
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("applicationWillTerminate")
     }
 
     // MARK: UISceneSession Lifecycle
