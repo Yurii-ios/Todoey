@@ -6,11 +6,11 @@
 //  Copyright © 2019 Yurii Sameliuk. All rights reserved.
 //
 
-import Foundation
-
-class Item: Codable{
-    
-    var title : String = ""
-    var done: Bool = false
-    
-}
+//import Foundation
+//etot klas ispolzyetsia .plist sposobom soxranenija dannux polzomatelia
+//class Item: Codable{
+//    
+//    var title : String = ""
+//    var done: Bool = false
+//    
+//}
